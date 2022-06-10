@@ -1,0 +1,29 @@
+---
+# tasks file for ansible-role-autofs
+- name: ansible-role-autofs/tasks/main.yml - Ensure Dependencies are installed
+  package:
+   name: "{{ item }}"
+   state: present
+  with_items:
+   - 'autofs'
+  notify:
+    - "enable_autofs"
+    - "start_autofs"
+- name: ansible-role-autofs/tasks/main.yml - Deploy Auto Maps
+  template:
+    src: "auto.j2"
+    dest: "/etc/auto.{{ item.key }}"
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  with_dict: "{{ autofs_mounts }}"
+  notify: restart_autofs
+- name: ansible-role-autofs/tasks/main.yml - Deploy autofs configs
+  template:
+    src: "autofs.j2"
+    dest: "/etc/auto.master.d/{{ item.key }}.autofs"
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  with_dict: "{{ autofs_mounts }}"
+  notify: restart_autofs

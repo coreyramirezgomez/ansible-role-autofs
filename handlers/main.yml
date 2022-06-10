@@ -1,0 +1,17 @@
+---
+# handlers file for ansible-role-autofs
+- name: ansible-role-autofs/handlers/main.yml - Enable autofs
+  service:
+    name: "autofs.service"
+    enabled: yes
+  listen: "enable_autofs"
+- name: ansible-role-autofs/handlers/main.yml - Start autofs
+  service: 
+    name: "autofs.service"
+    state: started
+  listen: "start_autofs"
+- name: ansible-role-autofs/handlers/main.yml - Restart autofs
+  service:
+    name: "autofs.service"
+    state: restarted
+  listen: "restart_autofs"

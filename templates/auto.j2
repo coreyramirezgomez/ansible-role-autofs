@@ -1,0 +1,5 @@
+{{ ansible_managed | comment }}
+# This file should be at /etc/auto.{{ item.key }}
+{% for mount in item.value.mounts %}
+{{ mount.target_path }} {{ mount.connection_opts | default("", false) }} {% for server in mount.source_servers %}{{ server }}:{{ mount.source_path }}{% endfor %}
+{% endfor %}

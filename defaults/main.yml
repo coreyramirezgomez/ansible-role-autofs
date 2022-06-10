@@ -1,0 +1,19 @@
+---
+# defaults file for ansible-role-autofs
+# difference between direct/indirect: https://learn.redhat.com/t5/Platform-Linux/Difference-between-Direct-and-Indirect-Automount/td-p/20869
+autofs_mounts: {}
+# "nightshade":
+#   mounts:
+#     - target_path: "/misc/docs"
+#       source_servers:
+#         - "10.75.75.5"
+#       source_path: "/mnt/docs"
+#       connection_opts: "-rw,soft,intr,rsize=8192,wsize=8192"
+#   target_root_path: "/-" # denotes direct mount.
+# "home":
+#   mounts:
+#     - target_path: "*"
+#       source_servers:
+#         - "nfs.example.net"
+#       source_path: "/mnt/homes/&"
+#   target_root_path: "/home"
