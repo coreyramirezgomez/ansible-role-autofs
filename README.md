@@ -12,7 +12,7 @@ Install and configure autofs.
 
     - hosts: afp_hosts
       roles:
-        - role: coreyramirezgomez.autofs
+        - role: crg.autofs
           autofs_mounts:
             "docs":
               mounts:
